@@ -176,4 +176,28 @@ describe User do
   end
 
 
+  describe "account associations" do
+
+    before(:each) do
+      @user = User.create(@attr)
+      @acc1 = Factory(:account, :user => @user, :created_at => 1.day.ago)
+      @acc2 = Factory(:account, :user => @user, :created_at => 1.hour.ago)
+    end
+
+    it "should have an account attribute" do
+      @user.should respond_to(:accounts)
+    end
+
+    it "should have the right accounts in the right order" do 
+      @user.accounts.should == [@acc2, @acc1]
+    end
+
+
+    it "should destroy associated accounts" do 
+      @user.destroy
+      [@acc1, @acc2].each do |account|
+        Account.find_by_id(account.id).should be_nil
+      end
+    end
+  end
 end
