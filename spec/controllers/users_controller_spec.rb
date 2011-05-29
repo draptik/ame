@@ -105,6 +105,16 @@ describe UsersController do
       get :show, :id => @user
       response.should have_selector('td>a', :content => user_path(@user), :href => user_path(@user))
     end
+
+    
+    it "should show the user's accounts" do 
+      acc1 = Factory(:account, :user => @user, :name => "Foo bar account")
+      acc2 = Factory(:account, :user => @user, :name => "Bar Baz account")
+      get :show, :id => @user
+      response.should have_selector("span.account", :content => acc1.name)
+      response.should have_selector("span.account", :content => acc2.name)
+    end
+
   end
 
   describe "GET 'new'" do

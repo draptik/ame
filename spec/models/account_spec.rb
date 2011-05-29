@@ -37,9 +37,8 @@ describe Account do
       @user.accounts.build(:account_number => " ").should_not be_valid
     end
 
-    it "should require an integer account number" do 
-      @user.accounts.build(:account_number => " ").should_not be_valid
-    end
+    it "should require an integer account number" 
+
     it "should require a non-blank bank number" do 
       @user.accounts.build(:bank_number => " ").should_not be_valid
     end

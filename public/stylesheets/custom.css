@@ -199,3 +199,62 @@ ul.users {
 ul.users li {
     list-style: none;
 }
+
+
+
+
+
+h1.account {
+  margin-bottom: 0.3em;
+}
+
+table.accounts {
+  margin-top: 1em;
+}
+
+table.accounts tr {
+  height: 70px;
+}
+
+table.accounts tr td.gravatar {
+  border-top: 1px solid #ccc;
+  vertical-align: top;
+  width: 50px;
+}
+
+table.accounts tr td.account {
+  border-top: 1px solid #ccc;
+  vertical-align: top;
+  padding-top: 10px;
+}
+
+table.accounts tr td.account span.timestamp {
+  display: block;
+  font-size: 85%;
+  color: #666;
+}
+
+div.user_info img {
+  padding-right: 0.1em;
+}
+
+div.user_info a {
+  text-decoration: none;
+}
+
+div.user_info span.user_name {
+  position: absolute;
+}
+
+div.user_info span.accounts {
+  font-size: 80%;
+}
+
+form.new_account {
+  margin-bottom: 2em;
+}
+
+form.new_account textarea {
+  height: 4em;
+  margin-bottom: 0;
+}
