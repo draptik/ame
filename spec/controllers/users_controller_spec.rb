@@ -111,8 +111,8 @@ describe UsersController do
       acc1 = Factory(:account, :user => @user, :name => "Foo bar account")
       acc2 = Factory(:account, :user => @user, :name => "Bar Baz account")
       get :show, :id => @user
-      response.should have_selector("span.account", :content => acc1.name)
-      response.should have_selector("span.account", :content => acc2.name)
+      response.should have_selector("span.acc_name", :content => acc1.name)
+      response.should have_selector("span.acc_name", :content => acc2.name)
     end
 
   end

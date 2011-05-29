@@ -1,0 +1,18 @@
+<%= form_for @account do |f| %>
+<%= render 'shared/error_messages', :object => f.object %>
+<div class="field">
+  <%= f.label :name %><br />
+  <%= f.text_field :name %>
+</div>
+<div class="field">
+  <%= f.label :bank_number %><br />
+  <%= f.text_field :bank_number %>
+</div>
+<div class="field">
+  <%= f.label :account_number %><br />
+  <%= f.text_field :account_number %>
+</div>
+<div class="actions">
+  <%= f.submit "Submit" %>
+</div>
+<% end %>

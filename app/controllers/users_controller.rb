@@ -51,10 +51,6 @@
 
    private
 
-   def authenticate
-     deny_access unless signed_in?
-   end
-
    # Prevent user A from editing settings of user B
    def correct_user
      # get requested user from url params...
