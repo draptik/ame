@@ -3,4 +3,9 @@
 	<span class="acc_name"><%= account.name %></span>
 	<span class="acc_no"><%= account.account_number %></span>
   </td>
+  <% if current_user?(account.user) %>
+  <td>
+	<%= link_to "delete", account, :method => :delete, :confirm => "You sure?", :title => account.name %>
+  </td>
+  <% end %>
 </tr>
