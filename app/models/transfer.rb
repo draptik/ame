@@ -24,8 +24,12 @@ class Transfer < ActiveRecord::Base
 
   belongs_to :account
 
-  validates :account_id, :presence => true
-  validates :booking_account, :presence => true
+  validates :account_id, 			:presence => true
+  validates :booking_date, 			:presence => true
+  validates :booking_text, 			:presence => true
+  validates :recipient, 			:presence => true
+  validates :value, 				:presence => true
+  validates :currency, 				:presence => true
   
   default_scope :order => 'transfers.booking_date DESC'
 end

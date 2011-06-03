@@ -1,5 +1,8 @@
 Ame::Application.routes.draw do
 
+  get "test_import_csv/import"
+  post "test_import_csv/import" => 'test_import_csv#upload'
+
   resources :users
   resources :sessions, :only => [:new, :create, :destroy]
   resources :accounts, :only => [:create, :destroy]

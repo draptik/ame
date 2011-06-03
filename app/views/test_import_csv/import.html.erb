@@ -1,0 +1,8 @@
+
+<h1>TestImportCsv#import</h1>
+<p>Find me in app/views/test_import_csv/import.html.erb</p>
+
+<%= form_for :upload, :html => { :multipart => true } do |f| %>
+<%= f.file_field :csv %><br/>
+<%= f.submit "Upload", :disable_with => "Uploading..." %>
+<% end %>
