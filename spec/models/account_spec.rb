@@ -45,7 +45,32 @@ describe Account do
     it "should require a non-blank name" do 
       @user.accounts.build(:name => " ").should_not be_valid
     end
+  end
 
+  describe "transfer associations" do 
+    before(:each) do
+      @account = @user.accounts.create(@attr)
+      @transfer1 = Factory(:transfer, :account => @account, :booking_date => 1.day.ago)
+      @transfer2 = Factory(:transfer, :account => @account, :booking_date => 1.hour.ago)
+    end
 
+    it "should have a transfers attribute" do 
+      @account.should respond_to(:transfers)
+    end
+
+    it "should have the right transfers in the right order" do
+      # puts "T1 account name #{@transfer1.account.name}"
+      # puts "T2 account name #{@transfer1.account.name}"
+      # puts "account name #{@account.name}"
+      # puts "account transfers #{@account.transfers}"
+      @account.transfers.should == [@transfer2,  @transfer1]
+    end
+
+    it "should destroy associated transfers" do 
+      @account.destroy
+      [@transfer1, @transfer2].each do |transfer|
+        Transfer.find_by_id(transfer.id).should be_nil
+      end
+    end
   end
 end

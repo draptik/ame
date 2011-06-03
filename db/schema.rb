@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110529180905) do
+ActiveRecord::Schema.define(:version => 20110603064043) do
 
   create_table "accounts", :force => true do |t|
     t.integer  "account_number"
@@ -22,6 +22,25 @@ ActiveRecord::Schema.define(:version => 20110529180905) do
   end
 
   add_index "accounts", ["user_id"], :name => "index_accounts_on_user_id"
+
+  create_table "transfers", :force => true do |t|
+    t.integer  "account_id"
+    t.integer  "booking_account"
+    t.date     "booking_date"
+    t.date     "value_date"
+    t.string   "booking_text"
+    t.string   "reason_for_payment"
+    t.string   "recipient"
+    t.integer  "recipient_account"
+    t.string   "recipient_bank_number"
+    t.decimal  "value"
+    t.string   "currency"
+    t.string   "info"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "transfers", ["account_id"], :name => "index_transfers_on_account_id"
 
   create_table "users", :force => true do |t|
     t.string   "name"
