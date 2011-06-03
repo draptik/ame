@@ -3,6 +3,7 @@ Ame::Application.routes.draw do
   resources :users
   resources :sessions, :only => [:new, :create, :destroy]
   resources :accounts, :only => [:create, :destroy]
+  resources :transfers
 
   root :to => "pages#home"
 

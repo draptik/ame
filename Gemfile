@@ -14,8 +14,9 @@ gem 'sqlite3'
 gem 'sqlite3-ruby', '1.3.3', :require => 'sqlite3'
 
 ## PD 
- gem 'gravatar_image_tag' #, '1.0.0'
- gem 'will_paginate', '3.0.pre2'
+gem 'gravatar_image_tag' #, '1.0.0'
+gem 'will_paginate', '3.0.pre2'
+gem 'fastercsv'
 
 ## PD 
 group :development do
