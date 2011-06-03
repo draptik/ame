@@ -26,6 +26,7 @@ class Transfer < ActiveRecord::Base
 
   validates :account_id, 			:presence => true
   validates :booking_date, 			:presence => true
+  validates :value_date, 			:presence => true
   validates :booking_text, 			:presence => true
   validates :recipient, 			:presence => true
   validates :value, 				:presence => true

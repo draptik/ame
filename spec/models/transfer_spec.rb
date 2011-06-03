@@ -53,6 +53,19 @@ describe Transfer do
       @account.transfers.build(:booking_date => " ").should_not be_valid
     end
 
+    it "should accept a valid date for booking date" do
+      @account.transfers.create(@attr.merge(:booking_date => Date.parse("28.02.2011"))).should be_valid
+    end
+
+    # it "should reject an invalid date for value date" do 
+    #   @account.transfers.create(@attr.merge(:value_date => Date.parse("30.02.2011"))).should_not be_valid
+    #   # @account.transfers.build(:value_date => "32.12.2000").should_not be_valid
+    # end
+
+    it "should accept a valid date for value date" do
+      @account.transfers.create(@attr.merge(:value_date => Date.parse("28.02.2011"))).should be_valid
+    end
+
     it "should require a booking text" do 
       @account.transfers.build(:booking_text => " ").should_not be_valid
     end

@@ -49,6 +49,7 @@
      redirect_to users_path, :flash => { :success => "User destroyed." }
    end
 
+   # PRIVATE =====================================================
    private
 
    # Prevent user A from editing settings of user B
@@ -59,7 +60,7 @@
      redirect_to root_path unless current_user?(@user)
    end
 
-   # Prevent non-admin users and current_user==admin from calling action 'destroy'
+   # Prevent non-admin users and current_user!=admin from calling action 'destroy'
    def admin_user
      user = User.find(params[:id])
      redirect_to root_path if !current_user.admin? || current_user?(user)
