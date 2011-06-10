@@ -1,0 +1,23 @@
+<h1><%= current_user.name %>&nbsp;|&nbsp;Account:&nbsp;<%= @account.account_number %> </h1>
+<% unless @account.transfers.empty?  %>
+<table class="transfers">
+  <tr class="column_header">
+	<td>Value date</td>
+	<td>booking text</td>
+	<td>reason</td>
+	<td>recipient</td>
+	<td>value</td>
+  </tr>
+  <% @account.transfers.each do |t| %>
+  <tr class="table_content">
+	<td><%= t.value_date %></td> 
+	<td><%= t.booking_text %></td> 
+	<td><%= t.reason_for_payment %></td> 
+	<td><%= t.recipient %></td> 
+	<td><%= t.value %></td> 
+  </tr>
+  <% end %>
+</table>
+<% else %>
+<p>No transfers for this account.</p>
+<% end %>

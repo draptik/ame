@@ -1,7 +1,10 @@
 class AccountsController < ApplicationController
 
   before_filter :authenticate
-  before_filter :authorized_user, :only => :destroy
+  before_filter :authorized_user, :only => [:destroy, :show]
+
+  def show
+  end
 
   def create
     @account = current_user.accounts.build(params[:account])

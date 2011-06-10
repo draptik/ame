@@ -258,3 +258,13 @@ form.new_account textarea {
   height: 4em;
   margin-bottom: 0;
 }
+
+
+/* ============================== */
+/* Transfers ==================== */
+/* ============================== */
+.transfers tr td {
+    font-size: 11px;
+}
+
+

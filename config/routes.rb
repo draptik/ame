@@ -5,8 +5,12 @@ Ame::Application.routes.draw do
 
   resources :users
   resources :sessions, :only => [:new, :create, :destroy]
-  resources :accounts, :only => [:create, :destroy]
-  resources :transfers
+  # resources :accounts, :only => [:create, :destroy]
+  # resources :transfers
+
+  resources :accounts, :only => [:create, :destroy, :show] do 
+    resources :transfers, :only => :index
+  end
 
   root :to => "pages#home"
 
