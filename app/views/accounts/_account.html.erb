@@ -5,6 +5,7 @@
   </td>
   <% if current_user?(account.user) %>
   <td>
+	<%= link_to "show", account_transfers_path(account)  %>&nbsp;&nbsp;|&nbsp;
 	<%= link_to "delete", account, :method => :delete, :confirm => "You sure?", :title => account.name %>
   </td>
   <% end %>
