@@ -10,6 +10,11 @@ describe AccountsController do
       response.should redirect_to(signin_path)
     end
 
+    it "should deny access to 'show'" do 
+      get :show, :id => 1
+      response.should redirect_to(signin_path)
+    end
+
     it "should deny access to 'destroy'" do 
       delete :destroy, :id => 1
       response.should redirect_to(signin_path)
@@ -95,6 +100,38 @@ describe AccountsController do
         end.should change(Account, :count).by(-1)
       end
     end
-  end # DELETE 'destroy' 
+  end # DELETE 'destroy'
+
+
+  describe "GET 'show'" do 
+
+    describe "for an unauthorized user" do 
+
+      before(:each) do 
+        @user = Factory(:user)
+        wrong_user = Factory(:user, :email => Factory.next(:email))
+        test_sign_in(wrong_user)
+        @account = Factory(:account, :user => @user)
+      end
+
+      it "should deny access" do
+        get :show, :id => @account
+        response.should redirect_to(root_path)
+      end
+    end
+
+    describe "for an authorized user" do 
+
+      before(:each) do
+        @user = test_sign_in(Factory(:user))
+        @account = Factory(:account, :user => @user)
+      end
+
+      it "should have the right p" do 
+        get :show, :id => @account
+        response.should have_selector('p', :content => @account.name)
+      end
+    end
+  end # GET 'show'
 
 end
